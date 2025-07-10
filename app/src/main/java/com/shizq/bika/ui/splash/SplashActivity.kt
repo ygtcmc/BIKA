@@ -43,6 +43,10 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
         viewModel.getLatestVersion()//版本检测
     }
     */
+    override fun initData() {
+    showProgressBar(true, "获取节点信息...")
+    viewModel.getInit()
+    }
 
     @SuppressLint("SetTextI18n")
     override fun initViewObservable() {
