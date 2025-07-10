@@ -77,14 +77,18 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
                 //查看是否有默认节点 没有就存一个
                 //保存两个host地址
                 //2024.3.8 能跑以后改
-                if (initBean.addresses.isNotEmpty()) {
+                if (initBean.addresses.size >= 2) {
                     SPUtil.put("addresses1", initBean.addresses[0])
                     SPUtil.put("addresses2", initBean.addresses[1])
+                } else if (initBean.addresses.size == 1) {
+                    SPUtil.put("addresses1", initBean.addresses[0])
+                    SPUtil.put("addresses2", "104.21.20.188") // 备用默认
                 } else {
-                    //2024.3.8 防闪退加入哔咔常用的ip(以后不确定能用)
+                    // 默认哔咔 IP（不保证长期可用）
                     SPUtil.put("addresses1", "172.67.194.19")
                     SPUtil.put("addresses2", "104.21.20.188")
                 }
+
 
                 //检查是否有token 没有就进行登录 显示登录提示框
                 if (SPUtil.get("token", "") == "") {
