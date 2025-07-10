@@ -21,22 +21,15 @@ android {
 
     }
 
-    signingConfigs {
-        create("keyStore") {
-            storeFile = file("appkey.jks")
-            storePassword = "123456"
-            keyAlias = "shizq"
-            keyPassword = "123456"
-        }
-    }
+
     buildTypes {
         debug {
-            signingConfig = signingConfigs.getByName("keyStore")
+            // signingConfig = signingConfigs.getByName("keyStore")
         }
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            signingConfig = signingConfigs.getByName("keyStore")
+            // signingConfig = signingConfigs.getByName("keyStore")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
