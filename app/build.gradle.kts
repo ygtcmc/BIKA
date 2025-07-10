@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.shizq.bika.a"
+    namespace = "com.shizq.bikaa"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.shizq.bika.a"
+        applicationId = "com.shizq.bikaa"
         minSdk = 24
         targetSdk = 34
         versionCode = 8
