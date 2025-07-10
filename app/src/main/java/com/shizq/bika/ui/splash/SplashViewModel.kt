@@ -22,18 +22,6 @@ class SplashViewModel(application: Application) : BaseViewModel(application) {
         MutableLiveData<String>()
     }
 
-    fun getLatestVersion() {
-        val currentVersion = AppVersion().code().toString()
-        val dummyUpdateBean = UpdateBean(
-            version = currentVersion,
-            short_version = "v$currentVersion",
-            release_notes = "无更新",
-            download_url = ""
-        )
-        liveData_latest_version.postValue(dummyUpdateBean)
-    }
-
-
     fun getInit() {
         RetrofitUtil.service_init.initGet()
             .doOnSubscribe(this@SplashViewModel)
