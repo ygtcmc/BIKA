@@ -23,19 +23,16 @@ class SplashViewModel(application: Application) : BaseViewModel(application) {
     }
 
     fun getLatestVersion() {
-        RetrofitUtil.service_update.updateGet()
-            .doOnSubscribe(this@SplashViewModel)
-            .subscribe(object : Observer<UpdateBean> {
-                override fun onNext(t: UpdateBean) {
-                    liveData_latest_version.postValue(t)
-                }
-
-                override fun onError(e: Throwable) {}
-                override fun onSubscribe(d: Disposable) {}
-                override fun onComplete() {}
-
-            })
+        val currentVersion = AppVersion().code().toString()
+        val dummyUpdateBean = UpdateBean(
+            version = currentVersion,
+            short_version = "v$currentVersion",
+            release_notes = "无更新",
+            download_url = ""
+        )
+        liveData_latest_version.postValue(dummyUpdateBean)
     }
+
 
     fun getInit() {
         RetrofitUtil.service_init.initGet()
