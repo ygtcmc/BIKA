@@ -36,47 +36,16 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
         return BR.viewModel
     }
 
-    //版本检测挂了
-    /*
+
     override fun initData() {
-        showProgressBar(true,"获取版本信息...")//加载时 view不可点击
-        viewModel.getLatestVersion()//版本检测
+        showProgressBar(true, "获取节点信息...")
+        viewModel.getInit()
     }
-    */
-    override fun initData() {
-    showProgressBar(true, "获取节点信息...")
-    viewModel.getInit()
-    }
+
 
     @SuppressLint("SetTextI18n")
     override fun initViewObservable() {
         super.initViewObservable()
-
-        //更新
-        viewModel.liveData_latest_version.observe(this) {
-            if (it != null && it.version.toInt() > AppVersion().code()) {
-                MaterialAlertDialogBuilder(this)
-                    .setTitle("新版本 v${it.short_version}")
-                    .setMessage(it.release_notes)
-                    .setCancelable(false)
-                    .setPositiveButton("更新") { _, _ ->
-                        val intent = Intent()
-                        intent.action = "android.intent.action.VIEW"
-                        intent.data = Uri.parse(it.download_url)
-                        startActivity(intent)
-                        finish()
-                    }
-                    .setNegativeButton("取消"){_, _ ->
-                        showProgressBar(true,"获取节点信息...")
-                        viewModel.getInit()// 网络请求获取 节点一节点二
-                    }
-                    .show()
-            } else {
-                showProgressBar(true,"获取节点信息...")
-                viewModel.getInit()// 网络请求获取 节点一节点二
-            }
-        }
-
 
         //节点
         viewModel.liveData_init.observe(this) { initBean: InitBean ->
