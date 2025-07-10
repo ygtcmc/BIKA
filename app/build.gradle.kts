@@ -11,7 +11,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.shizq.bika"
+        applicationId = "com.shizq.bika.a"
         minSdk = 24
         targetSdk = 34
         versionCode = 8
