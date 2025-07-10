@@ -36,10 +36,13 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
         return BR.viewModel
     }
 
+    //版本检测挂了
+    /*
     override fun initData() {
         showProgressBar(true,"获取版本信息...")//加载时 view不可点击
         viewModel.getLatestVersion()//版本检测
     }
+    */
 
     @SuppressLint("SetTextI18n")
     override fun initViewObservable() {
